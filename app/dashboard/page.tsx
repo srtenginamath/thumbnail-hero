@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -23,11 +24,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ModeToggle } from "@/components/theme-toggle";
 import Link from "next/link";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
 
 export default function DashboardPage() {
+  const { isSignedIn, user, isLoaded } = useUser();
   // Mock data - in real app this would come from API/database
-  const user = {
+  const users = {
     name: "Alex Creator",
     email: "alex@example.com",
     avatar: "/diverse-user-avatars.png",
@@ -93,7 +95,7 @@ export default function DashboardPage() {
               </div>
               <nav className="hidden md:flex items-center gap-6">
                 <Button variant="ghost" className="text-foreground">
-                  Dashboard
+                  <Link href="/dashboard">Dashboard</Link>
                 </Button>
                 <Button
                   variant="ghost"
@@ -117,7 +119,7 @@ export default function DashboardPage() {
               >
                 <Zap className="w-4 h-4 text-accent" />
                 <span className="text-sm font-medium text-foreground">
-                  {user.creditsRemaining}/{user.totalCredits} credits
+                  {users.creditsRemaining}/{users.totalCredits} credits
                 </span>
               </Link>
               <ModeToggle />
@@ -137,7 +139,7 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold text-foreground mb-2">
-              Welcome back, {user.name.split(" ")[0]}!
+              Welcome back, {user?.fullName}
             </h2>
             <p className="text-muted-foreground">
               Ready to create some amazing thumbnails?
@@ -166,10 +168,10 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-foreground">
-                {user.creditsRemaining}
+                {users.creditsRemaining}
               </div>
               <p className="text-xs text-muted-foreground">
-                of {user.totalCredits} this month
+                of {users.totalCredits} this month
               </p>
             </CardContent>
           </Card>
@@ -298,7 +300,7 @@ export default function DashboardPage() {
               Ready to create your next viral thumbnail?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Use your remaining {user.creditsRemaining} credits to generate
+              Use your remaining {users.creditsRemaining} credits to generate
               professional thumbnails that boost your click-through rate.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

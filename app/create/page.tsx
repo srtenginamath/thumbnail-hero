@@ -350,7 +350,12 @@ import {
   Video,
   Palette,
   MapPin,
+  Zap,
 } from "lucide-react";
+import { ModeToggle } from "@/components/theme-toggle";
+import Link from "next/link";
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 export default function AdvancedPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -458,8 +463,67 @@ export default function AdvancedPage() {
     alert("Thumbnail copied!");
   };
 
+  const users = {
+    name: "Alex Creator",
+    email: "alex@example.com",
+    avatar: "/diverse-user-avatars.png",
+    creditsRemaining: 15,
+    totalCredits: 20,
+    plan: "Free",
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+      {/* Header */}
+      <header className="border-b border-border bg-card">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <h1 className="text-xl font-bold text-foreground">
+                  ThumbnailHero
+                </h1>
+              </div>
+              <nav className="hidden md:flex items-center gap-6">
+                <Button variant="ghost" className="text-foreground">
+                  <Link href="/dashboard">Dashboard</Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Templates
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Analytics
+                </Button>
+              </nav>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <Link
+                href="/credits"
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <Zap className="w-4 h-4 text-accent" />
+                <span className="text-sm font-medium text-foreground">
+                  {users.creditsRemaining}/{users.totalCredits} credits
+                </span>
+              </Link>
+              <ModeToggle />
+
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+
+              {/* Theme Toggle Button */}
+            </div>
+          </div>
+        </div>
+      </header>
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent mb-4">
