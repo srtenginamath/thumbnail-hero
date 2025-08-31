@@ -234,8 +234,10 @@ export default function HomePage() {
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
-              <Sparkles className="w-5 h-5 mr-2" />
-              Start Creating Free
+              <Link href="/create" className="flex items-center">
+                <Sparkles className="w-5 h-5 mr-2" />
+                Start Creating Free
+              </Link>
             </Button>
             <Button
               size="lg"
@@ -540,9 +542,6 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-primary rounded flex items-center justify-center">
-                <Play className="w-3 h-3 text-primary-foreground fill-current" />
-              </div>
               <span className="text-foreground font-semibold">
                 ThumbnailHero
               </span>
