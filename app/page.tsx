@@ -163,9 +163,9 @@ export default function HomePage() {
     return <div>Loading...</div>;
   }
 
-  if (!isSignedIn) {
-    return <div>Sign in to view this page</div>;
-  }
+  // if (!isSignedIn) {
+  //   return <div>Sign in to view this page</div>;
+  // }
 
   return (
     <div className="min-h-screen bg-background">
