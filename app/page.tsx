@@ -218,16 +218,17 @@ export default function HomePage() {
             className="hero-badge mb-6 bg-accent/10 text-accent border-accent/20"
           >
             <Star className="w-3 h-3 mr-1" />
-            Trusted by 10,000+ YouTube Creators
+            Trusted by YouTube Creators
           </Badge>
           <h2 className="hero-title text-4xl md:text-6xl font-bold text-foreground mb-6 text-balance">
-            Create <span className="text-primary">Click-Worthy</span> YouTube
+            Create <span className="text-primary">Eye-Catching</span> YouTube
             Thumbnails in Seconds
           </h2>
           <p className="hero-description text-xl text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto">
-            Transform your ideas into professional thumbnails with AI. Just
-            upload a photo, add your prompt, and get stunning results in both
-            horizontal and vertical formats.
+            Turn simple ideas into scroll-stopping, professional thumbnails with
+            the power of AI. Upload your photo, add your prompt, and get
+            ready-to-use designs in both horizontal and vertical formats —
+            perfect for YouTube, Shorts, and Reels.
           </p>
           <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -242,10 +243,10 @@ export default function HomePage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-border text-foreground hover:bg-accent hover:text-accent-foreground bg-transparent"
+              className="border-border text-foreground hover:bg-accent hover:text-primary bg-transparent"
             >
               <Play className="w-5 h-5 mr-2" />
-              Watch Demo
+              See How It Works
             </Button>
           </div>
           <div className="hero-features flex items-center justify-center gap-6 mt-8 text-sm text-muted-foreground">
